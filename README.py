@@ -15,7 +15,13 @@ Burton Radons
 https://github.com/Burton-Radons/
 
 
-
+Forked from Noah Norman. 
+Changes: updated .toe to .tox
+When dragging it into a project, you need to 
+set the external tox filepath for linking to
+work with external files
+Added any TOP with black filling to act as a
+blocker
 
 Please clone this from
 https://github.com/ancillarymagnet/touchfluids
