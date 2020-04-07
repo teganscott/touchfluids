@@ -17,7 +17,7 @@ float circle(vec2 pos, float r){
     uv *= aspect;
     pos *= aspect;
     float len = length(uv - pos);
-    return 1.-smoothstep(0.0, r, len);
+    return 1 - smoothstep(0.0, r, len);
 }
 
 void main() {
