@@ -6,6 +6,8 @@ uniform float uRadius;
 uniform vec2 uMouseButtons;
 uniform vec4 uStuffColorBias;
 uniform vec4 uStuffColorScale;
+uniform vec4 uBackgroundColor;
+uniform vec4 uSmokeColor;
 
 
 layout(location=0) out vec4 oSplat;
@@ -24,10 +26,16 @@ void main() {
 
 	float d = circle(uPoint, uRadius) * uMouseButtons.x;
 
-    vec4 inColorSum = vec4(0.0);
+    //vec4 inColorSum = vec4(1.0,1.0,1.0,1.0);//vec4(0.0);
+    vec4 inColorSum = vec4(1- uBackgroundColor.rgb, uBackgroundColor.a);
+    vec4 inSmokeColor = vec4(1-uSmokeColor.rgb, 1.0);
     for( int i = 0; i < TD_NUM_2D_INPUTS; i++){
-    	inColorSum += texture(sTD2DInputs[i],vUV.st);
+        if((texture(sTD2DInputs[i],vUV.st)).a > 0.8){
+    	    inColorSum += clamp(texture(sTD2DInputs[i],vUV.st), vec4(0.0), inSmokeColor);
+        }
     }
+
+
     
     // apply bias and scale,
     // mix with input

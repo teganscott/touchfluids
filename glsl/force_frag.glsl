@@ -40,7 +40,7 @@ void main() {
     for( int i = 0; i < TD_NUM_2D_INPUTS; i++){
         inForceSum += texture(sTD2DInputs[i],vUV.st).rg;
     }
-
+    //d = 0.0005;
     // use d value to paint force scale onto the scene
     // apply bias and scale
     vec2 scaledForce = mix(inForceSum, inForceSum * uForceBiasAndScale.zw, d);
